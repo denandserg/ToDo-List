@@ -7,7 +7,6 @@ variables:
 stages:
   - setup
   - code_quality
-  - testing
 
 dependencies:installation:
   stage: setup
@@ -44,17 +43,3 @@ lint:styles:
       - src/**/*.{css,scss}
   tags:
     - web-ci
-
-unit:testing:
-  stage: testing
-  cache:
-    paths:
-      - node_modules/
-  only:
-    changes:
-      - src/**/*.{ts,tsx}
-  script:
-    - yarn test
-  tags:
-    - web-ci
-
