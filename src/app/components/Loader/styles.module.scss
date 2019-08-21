@@ -1,0 +1,150 @@
+html,
+body {
+  height: 100%;
+}
+
+.Loader {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100%;
+
+  &.Loader__WithBgn {
+    &::before {
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: white;
+      opacity: 0.5;
+
+      content: '';
+    }
+  }
+
+  .Loader_Content {
+    position: relative;
+
+    padding: 1.5em;
+  }
+}
+
+.RingLoader {
+  position: relative;
+
+  width: 1em;
+  height: 1em;
+
+  font-size: 4.5em;
+
+  animation: ring-loader 5s infinite ease-in-out;
+
+  .RingLoader_Ring1,
+  .RingLoader_Ring2,
+  .RingLoader_Ring3,
+  .RingLoader_Ring4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 15px;
+    height: 15px;
+
+    border: 4px solid #0b1b48;
+    border-radius: 50%;
+  }
+
+  .RingLoader_Ring1 {
+    animation: ring-loader_Ring1__Animation 5s ease-in-out infinite;
+  }
+
+  .RingLoader_Ring2 {
+    animation: ring-loader_Ring2__Animation 5s ease-in-out infinite;
+  }
+
+  .RingLoader_Ring3 {
+    animation: ring-loader_Ring3__Animation 5s ease-in-out infinite;
+  }
+
+  .RingLoader_Ring4 {
+    animation: ring-loader_Ring4__Animation 5s ease-in-out infinite;
+  }
+
+  @keyframes ring-loader {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(270deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ring-loader_Ring1__Animation {
+    0% {
+      transform: translate(0);
+    }
+
+    50% {
+      border-color: #ee4d68;
+      transform: translate(-15px, 50px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes ring-loader_Ring2__Animation {
+    0% {
+      transform: translate(0);
+    }
+
+    50% {
+      border-color: #875678;
+      transform: translate(-50px, -100px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes ring-loader_Ring3__Animation {
+    0% {
+      transform: translate(0);
+    }
+
+    50% {
+      border-color: #f90;
+      transform: translate(-90px, -50px);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes ring-loader_Ring4__Animation {
+    0% {
+      transform: translate(0);
+    }
+
+    50% {
+      border-color: #00e4f6;
+      transform: translate(-50px, 0);
+    }
+
+    100% {
+      transform: translate(0);
+    }
+  }
+}
