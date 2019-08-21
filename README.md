@@ -6,10 +6,6 @@ Name | Description
 ---|---
 `start` | Starts web server which serves application in development mode
 `build` | Bundles application and puts it under `/build` folder
-`test`| Jest test which checks app dependencies and if root components renders without crashing
-`analyze` | Runs source maps based bundle analyzer and opens html page with diagram.
-`deploy` | Uploads build artifact to the place where web app is hosted
-`eject` | Ejects CRA. Read [more](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) before running.
 `lint:all:check`<br>`lint:all:fix`<br>`lint:all:fix`<br>`lint:scripts:check`<br>`lint:scripts:fix`<br>`lint:styles:check`<br>`lint:styles:fix` | Run static code quality check. Corresponding suffix allow specify to lint `all`/`scripts`/`styles`.<br>Postfix `check`/`fix` allows to switch between check only or apply automatic fix for issues where possible
 
 
