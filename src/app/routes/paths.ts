@@ -10,10 +10,10 @@ export interface match<P> {
 const RoutePaths = {
   _: pathCreator('/'),
   SignIn: {
-    _: pathCreator('/sign-in')
+    _: pathCreator('/signin')
   },
   Registration: {
-    _: pathCreator('/register')
+    _: pathCreator('/registration')
   }
 };
 
