@@ -36,9 +36,6 @@
 }
 
 .TodoListTask:hover {
-  border-left: toem(1) solid #0c9c0d;
-}
-
-.TodoListTask:nth-child(2):hover {
   border-right: toem(10) solid #0c9c0d;
+  border-left: toem(1) solid #0c9c0d;
 }

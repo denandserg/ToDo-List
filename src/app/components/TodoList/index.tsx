@@ -16,11 +16,13 @@ function _TodoList(props: typeof _TodoList.defaultProps) {
     <ul className={sm.TodoList}>
       <ScrollArea
         speed={0.8}
-        className="area"
+        className={sm.TodoList_ScrollArea}
         contentClassName="content"
         horizontal={false}
-      />
-      <TodoListTask />
+      >
+        <TodoListTask />
+        <TodoListTask />
+      </ScrollArea>
     </ul>
   );
 }
