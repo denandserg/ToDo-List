@@ -6,11 +6,13 @@ import sm from './styles.module.scss';
 
 _TodoListTask.defaultProps = {};
 
-const TodoListTask = enhance(_TodoListTask);
+interface Props {}
+
+const TodoListTask = enhance<Props, Props>(_TodoListTask);
 
 export default TodoListTask;
 
-function _TodoListTask(props: typeof _TodoListTask.defaultProps) {
+function _TodoListTask(props: Props) {
   return (
     <li className={sm.TodoListTask}>
       <span className={sm.TodoListTask_Title}>Test Task</span>

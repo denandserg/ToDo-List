@@ -7,11 +7,13 @@ import sm from './styles.module.scss';
 
 _TodoList.defaultProps = {};
 
-const TodoList = enhance(_TodoList);
+interface Props {}
+
+const TodoList = enhance<Props, Props>(_TodoList);
 
 export default TodoList;
 
-function _TodoList(props: typeof _TodoList.defaultProps) {
+function _TodoList(props: Props) {
   return (
     <ul className={sm.TodoList}>
       <ScrollArea
@@ -20,7 +22,6 @@ function _TodoList(props: typeof _TodoList.defaultProps) {
         contentClassName="content"
         horizontal={false}
       >
-        <TodoListTask />
         <TodoListTask />
       </ScrollArea>
     </ul>
