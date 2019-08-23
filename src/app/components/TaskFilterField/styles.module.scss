@@ -1,0 +1,18 @@
+@import '../../../assets/styles/variables/index';
+
+.TaskFilterField {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: toem(20) 0;
+
+  .TaskFilterField_CheckBox {
+    margin-right: 0.5rem;
+
+    cursor: pointer;
+  }
+
+  .TaskFilterField_Label {
+    cursor: pointer;
+  }
+}

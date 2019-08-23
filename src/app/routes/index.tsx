@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import CommonPageLayout from '../containers/CommonPageLayout';
 import Footer from '../containers/Footer';
 import Header from '../containers/Header';
+import TodoPage from '../page/TodoPage';
 import RoutePaths from './paths';
 import sm from './styles.module.scss';
 
@@ -23,7 +24,7 @@ export default function AppRoutes() {
               exact
               path={RoutePaths._()}
               render={() => (
-                <CommonPageLayout renderMainContent={() => <Loader />} />
+                <CommonPageLayout renderMainContent={() => <TodoPage />} />
               )}
             />
             <Redirect to={RoutePaths._()} />
