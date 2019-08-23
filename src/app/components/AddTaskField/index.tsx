@@ -6,7 +6,6 @@ import sm from './styles.module.scss';
 
 function AddTaskField(props: InjectedFormProps) {
   const { pristine, submitting, reset, handleSubmit } = props;
-  // const dispatch = useDispatch();
   return (
     <div className={sm.AddTaskField}>
       <div className={sm.AddTaskField_Title}>ToDo. Take it & do it!</div>

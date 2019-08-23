@@ -9,6 +9,21 @@ export default function* watchersSaga() {
   yield takeEvery(['TASK_DELETED'], deleteTask);
 
   yield takeEvery(['ADD_TASK'], addTask);
+
+  yield takeEvery(['EDIT_TASK'], editTask);
+}
+
+function* editTask({
+  type,
+  payload
+}: {
+  type: string;
+  payload: { content: string; id: number };
+}) {
+  yield apiService.updateTaskById(payload.id, {
+    content: payload.content
+  });
+  yield call(fetchTasks);
 }
 
 function* addTask({ type, payload }: { type: string; payload: string }) {
