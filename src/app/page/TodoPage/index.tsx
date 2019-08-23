@@ -20,9 +20,13 @@ function _TodoPage(props: typeof _TodoPage.defaultProps) {
   }, [dispatch]);
   const allTasks = useSelector(ApiSelectors.allTasks);
 
+  function handleAddTask(data: { addTask?: string }) {
+    dispatch({ type: 'ADD_TASK', payload: data.addTask });
+  }
+
   return (
     <>
-      <AddTaskField />
+      <AddTaskField onSubmit={handleAddTask} />
       <TaskFilterField />
       <TodoList tasks={allTasks} />
     </>

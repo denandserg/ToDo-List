@@ -7,6 +7,17 @@ export default function* watchersSaga() {
   yield takeEvery(['TASKS_REQUESTED'], fetchTasks);
 
   yield takeEvery(['TASK_DELETED'], deleteTask);
+
+  yield takeEvery(['ADD_TASK'], addTask);
+}
+
+function* addTask({ type, payload }: { type: string; payload: string }) {
+  yield apiService.createNewTask({
+    content: payload,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    project_id: 2215859840
+  });
+  yield call(fetchTasks);
 }
 
 function* deleteTask({
