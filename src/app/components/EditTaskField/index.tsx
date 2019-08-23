@@ -23,7 +23,6 @@ function _EditTaskField(props: _Props) {
     submitting,
     reset,
     handleSubmit,
-    change,
     changeIsEdit,
     task
   } = props;
@@ -38,6 +37,7 @@ function _EditTaskField(props: _Props) {
       })
     ).then(() => changeIsEdit(false));
   }
+
   return (
     <div className={sm.EditTaskField}>
       <form
@@ -62,17 +62,6 @@ function _EditTaskField(props: _Props) {
             onClick={reset}
           >
             Clear
-          </button>
-          <button
-            type="button"
-            className={cn(
-              sm.EditTaskField_FormButton,
-              sm.EditTaskField_FormButton__Warning
-            )}
-            disabled={pristine || submitting}
-            onClick={() => change('editTask', 'default')}
-          >
-            Default
           </button>
           <button
             type="button"

@@ -22,6 +22,11 @@ function _TodoListTask(props: Props) {
   const { task } = props;
   const dispatch = useDispatch();
 
+  function handleSetIsEdit() {
+    dispatch({ type: 'CURRENT_TASK', payload: task });
+    setIsEdit(true);
+  }
+
   return isEdit ? (
     <EditTaskField task={task} changeIsEdit={setIsEdit} />
   ) : (
@@ -31,7 +36,7 @@ function _TodoListTask(props: Props) {
         variant="linklike"
         iconPre="edit"
         className={cn(sm.TodoListTask_Button, sm.TodoListTask_Button__Primary)}
-        onClick={() => setIsEdit(true)}
+        onClick={handleSetIsEdit}
       >
         Edit
       </Button>

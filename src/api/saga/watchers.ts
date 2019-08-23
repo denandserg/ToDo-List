@@ -11,6 +11,12 @@ export default function* watchersSaga() {
   yield takeEvery(['ADD_TASK'], addTask);
 
   yield takeEvery(['EDIT_TASK'], editTask);
+
+  yield takeEvery(['CURRENT_TASK'], currentTask);
+}
+
+function* currentTask({ type, payload }: { type: string; payload: Task }) {
+  yield put({ type: API_REQ.TASKS.CURRENT_TASK, payload });
 }
 
 function* editTask({

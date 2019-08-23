@@ -8,11 +8,13 @@ const enhance = <I, O>(component: ComponentType<I>) =>
   compose<I, O>(
     withErrorBoundary,
     setDisplayName('EditTaskField'),
+    withProps(({ task }: { task: Task }) => ({
+      initialValues: { editTask: task.content }
+    })),
     reduxForm({
       form: 'editTaskForm',
       enableReinitialize: true
-    }),
-    withProps(({ task }: { task: Task }) => ({ initialValues: task.content }))
+    })
   )(component);
 
 export default enhance;
