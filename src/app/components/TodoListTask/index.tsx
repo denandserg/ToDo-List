@@ -1,4 +1,6 @@
+import cn from 'classnames';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import Button from '../Button';
 import enhance from './enhance';
@@ -16,6 +18,8 @@ export default TodoListTask;
 
 function _TodoListTask(props: Props) {
   const { task } = props;
+  const dispatch = useDispatch();
+
   return (
     <li className={sm.TodoListTask}>
       <span className={sm.TodoListTask_Title}>{task.content}</span>
@@ -29,7 +33,8 @@ function _TodoListTask(props: Props) {
       <Button
         variant="linklike"
         iconPre="minus"
-        className={sm.TodoListTask_Button}
+        className={cn(sm.TodoListTask_Button, sm.TodoListTask_Button__Danger)}
+        onClick={() => dispatch({ type: 'TASK_DELETED', payload: task })}
       >
         Delete
       </Button>
