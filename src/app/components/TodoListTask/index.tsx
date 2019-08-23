@@ -6,16 +6,19 @@ import sm from './styles.module.scss';
 
 _TodoListTask.defaultProps = {};
 
-interface Props {}
+interface Props {
+  task: Task;
+}
 
 const TodoListTask = enhance<Props, Props>(_TodoListTask);
 
 export default TodoListTask;
 
 function _TodoListTask(props: Props) {
+  const { task } = props;
   return (
     <li className={sm.TodoListTask}>
-      <span className={sm.TodoListTask_Title}>Test Task</span>
+      <span className={sm.TodoListTask_Title}>{task.content}</span>
       <Button
         variant="linklike"
         iconPre="edit"
