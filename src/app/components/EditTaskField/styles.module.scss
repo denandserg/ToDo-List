@@ -1,0 +1,143 @@
+@import '../../../assets/styles/variables/index';
+
+.EditTaskField {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.315em;
+
+  .EditTaskField_Form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1em 0;
+
+    .EditTaskField_Input {
+      flex-grow: 1;
+      height: 1.9rem;
+      margin-right: 7px;
+      padding: 0 10px;
+
+      border: 2px solid #0c9c0d;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .EditTaskField_Input::-webkit-input-placeholder {
+      text-indent: 0;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input::-moz-placeholder {
+      text-indent: 0;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:-moz-placeholder {
+      text-indent: 0;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:-ms-input-placeholder {
+      text-indent: 0;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:focus::-webkit-input-placeholder {
+      text-indent: 900px;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:focus::-moz-placeholder {
+      text-indent: 900px;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:focus:-moz-placeholder {
+      text-indent: 900px;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_Input:focus:-ms-input-placeholder {
+      text-indent: 900px;
+
+      transition: text-indent 0.7s ease;
+    }
+
+    .EditTaskField_FormButton {
+      position: relative;
+
+      display: inline-block;
+      min-width: 5em;
+      height: 2em;
+      margin-left: toem(15);
+
+      color: rgb(245, 245, 245);
+      font-weight: 700;
+      font-size: 0.9em;
+      font-family: Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif;
+      text-decoration: none;
+      text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
+
+      background: #0c9c0d linear-gradient(#82d18d, #0c9c0d);
+      border: none;
+      border-radius: 3px;
+      outline: none;
+      box-shadow: inset #72de26 0 -1px 1px, inset 0 1px 1px #98ff98, #3caa3c 0 0 0 1px, rgba(0, 0, 0, 0.3) 0 2px 5px;
+
+      animation: pulsate 1.2s linear infinite;
+
+      user-select: none;
+    }
+
+    .EditTaskField_FormButton:hover {
+      cursor: pointer;
+
+      animation-play-state: paused;
+    }
+
+    .EditTaskField_FormButton:active {
+      top: toem(1);
+
+      color: #fff;
+      text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #ffd, 0 0 8px #fff;
+
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3), 0 1px 1px #fff, inset 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .EditTaskField_FormButton:disabled {
+      position: relative;
+
+      display: inline-block;
+
+      color: rgb(245, 245, 245);
+
+      background: gray;
+      border: toem(3);
+      box-shadow: none;
+
+      animation-play-state: paused;
+
+      user-select: none;
+    }
+
+    .EditTaskField_FormButton__Warning {
+      background: #9c0012 linear-gradient(#d14445, #9c0512);
+      box-shadow: inset #de0032 0 -1px 1px, inset 0 1px 1px #ff688d, #aa1d05 0 0 0 1px, rgba(0, 0, 0, 0.3) 0 2px 5px;
+    }
+
+    @keyframes pulsate {
+      50% {
+        color: #fff;
+        text-shadow: 0 -1px rgba(0, 0, 0, 0.3), 0 0 5px #ffd, 0 0 8px #fff;
+      }
+    }
+  }
+}

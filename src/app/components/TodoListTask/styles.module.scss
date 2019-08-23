@@ -33,6 +33,22 @@
   .TodoListTask_Button {
     padding: 0 0 0 toem(35);
   }
+
+  .TodoListTask_Button__Danger {
+    color: #eec6cb;
+  }
+
+  .TodoListTask_Button__Primary {
+    color: #a9a9a9;
+  }
+
+  .TodoListTask_Button__Primary:hover {
+    color: #151415;
+  }
+
+  .TodoListTask_Button__Danger:hover {
+    color: #ee0019;
+  }
 }
 
 .TodoListTask:hover {
