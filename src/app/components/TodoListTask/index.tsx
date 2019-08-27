@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Button from '../Button';
+import CheckFinishedTaskField from '../CheckFinishedTaskField';
 import EditTaskField from '../EditTaskField';
 import enhance from './enhance';
 import sm from './styles.module.scss';
@@ -31,7 +32,16 @@ function _TodoListTask(props: Props) {
     <EditTaskField task={task} changeIsEdit={setIsEdit} />
   ) : (
     <li className={sm.TodoListTask}>
-      <span className={sm.TodoListTask_Title}>{task.content}</span>
+      <CheckFinishedTaskField key={task.id} task={task} />
+      <span
+        className={
+          task.completed
+            ? cn(sm.TodoListTask_Title, sm.TodoListTask_Title__Completed)
+            : sm.TodoListTask_Title
+        }
+      >
+        {task.content}
+      </span>
       <Button
         variant="linklike"
         iconPre="edit"

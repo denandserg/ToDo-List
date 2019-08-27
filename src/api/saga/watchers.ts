@@ -17,6 +17,21 @@ export default function* watchersSaga() {
   yield takeEvery(['FETCH_ALL_PROJECTS'], fetchAllProjects);
 
   yield takeEvery(['CURRENT_PROJECT'], setCurrentProject);
+
+  yield takeEvery(['TOGGLE_FINISHED_TASK'], changeFinishedTask);
+}
+
+function* changeFinishedTask({
+  type,
+  payload
+}: {
+  type: string;
+  payload: { id: number };
+}) {
+  const api = new TodoistApiREST('9ea02f65a3203b7c30a1c67f05f96c8cb5437dd7');
+  const currentProject = yield select(ApiSelectors.currentProject);
+  yield api.closeTaskById(payload.id);
+  yield call(fetchTasks, currentProject);
 }
 
 function* setCurrentProject({
