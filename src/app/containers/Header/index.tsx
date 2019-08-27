@@ -3,6 +3,7 @@ import React from 'react';
 
 import Button from '../../components/Button';
 import Logo from '../../components/Logo';
+import SelectProjectField from '../../components/SelectProjectField';
 import RoutePaths from '../../routes/paths';
 import enhance from './enhance';
 import sm from './styles.module.scss';
@@ -24,6 +25,9 @@ function _Header(props: Props) {
             <Logo />
           </div>
         </Button>
+      </div>
+      <div className={sm.Header_CenterGroup}>
+        <SelectProjectField />
       </div>
       {/* {isSign && ( */}
       {/*  <div className={cn(tf.pageHeader, sm.Header_RightGroupTitle)}> */}

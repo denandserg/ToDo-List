@@ -1,0 +1,34 @@
+@import "../../../assets/styles/variables/index";
+
+.SelectProjectField {
+  .SelectProjectField_Form {
+    display: flex;
+    align-items: center;
+
+    .SelectProjectField_Title {
+      margin-right: 1em;
+
+      font-weight: 700;
+      font-size: 16px;
+      font-family: sans-serif;
+    }
+
+    .SelectProjectField_Select {
+      box-sizing: border-box;
+      min-width: toem(300);
+      margin: 0;
+      padding: 0.6em 1.4em 0.5em 0.8em;
+
+      color: $almostBlack;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: sans-serif;
+      line-height: 1.2;
+
+      border: 1px solid #aaa;
+      border-radius: 0.8em;
+      outline: none;
+      box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    }
+  }
+}

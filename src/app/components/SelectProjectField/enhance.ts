@@ -1,5 +1,5 @@
 import { ComponentType } from 'react';
-import { compose, setDisplayName, withProps } from 'recompose';
+import { compose, setDisplayName } from 'recompose';
 import { reduxForm } from 'redux-form';
 
 import withErrorBoundary from '../../../hocs/withErrorBoundary';
@@ -7,12 +7,9 @@ import withErrorBoundary from '../../../hocs/withErrorBoundary';
 const enhance = <I, O>(component: ComponentType<I>) =>
   compose<I, O>(
     withErrorBoundary,
-    setDisplayName('SelectProjectField'),
-    withProps(({ task }: { task: Task }) => ({
-      initialValues: { editTask: task.content }
-    })),
+    setDisplayName('SelectProject'),
     reduxForm({
-      form: 'editTaskForm',
+      form: 'selectProject',
       enableReinitialize: true
     })
   )(component);
