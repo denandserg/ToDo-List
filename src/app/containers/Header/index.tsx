@@ -1,3 +1,4 @@
+import axios from 'axios';
 import cn from 'classnames';
 import React from 'react';
 
@@ -17,6 +18,19 @@ const Header = enhance<Props, Props>(_Header);
 export default Header;
 
 function _Header(props: Props) {
+  function handleSignIn() {
+    axios.get(
+      `https://todoist.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=task:add,data:read_write,data:delete&state=secretstring`,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': '*'
+        }
+      }
+    );
+  }
+
   return (
     <div className={cn(sm.Header)}>
       <div className={sm.Header_LeftGroup}>
@@ -35,7 +49,7 @@ function _Header(props: Props) {
       {/*  </div> */}
       {/* )} */}
       <div className={sm.Header_RightGroup}>
-        <Button iconPre="user" variant="standard">
+        <Button iconPre="user" variant="standard" onClick={handleSignIn}>
           Sign In
         </Button>
       </div>
