@@ -16,6 +16,7 @@ export default TodoPage;
 function _TodoPage(props: typeof _TodoPage.defaultProps) {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch({ type: 'FETCH_ALL_PROJECTS' });
     dispatch({ type: 'TASKS_REQUESTED' });
   }, [dispatch]);
   const allTasks = useSelector(ApiSelectors.allTasks);

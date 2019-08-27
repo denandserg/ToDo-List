@@ -1,11 +1,11 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
+import TodoistApiREST from 'todoist-api-ts';
 
 import API_REQ from '../../redux/actions';
+import ApiSelectors from '../../redux/selectors';
 import apiService from '../todoService';
 
 export default function* watchersSaga() {
-  yield takeEvery(['TASKS_REQUESTED'], fetchTasks);
-
   yield takeEvery(['TASK_DELETED'], deleteTask);
 
   yield takeEvery(['ADD_TASK'], addTask);
@@ -13,6 +13,35 @@ export default function* watchersSaga() {
   yield takeEvery(['EDIT_TASK'], editTask);
 
   yield takeEvery(['CURRENT_TASK'], currentTask);
+
+  yield takeEvery(['FETCH_ALL_PROJECTS'], fetchAllProjects);
+
+  yield takeEvery(['CURRENT_PROJECT'], setCurrentProject);
+}
+
+function* setCurrentProject({
+  type,
+  payload
+}: {
+  type: string;
+  payload: Project;
+}) {
+  yield put({ type: API_REQ.PROJECTS.SET_CURRENT_PROJECT, payload });
+  yield call(fetchTasks, payload);
+}
+
+function* fetchAllProjects({
+  type,
+  payload
+}: {
+  type: string;
+  payload: Project[];
+}) {
+  const allProjects = yield apiService.getAllProjects();
+  yield put({
+    type: API_REQ.PROJECTS.FETCH_ALL_PROJECTS_BY_USER_TOKEN,
+    payload: allProjects
+  });
 }
 
 function* currentTask({ type, payload }: { type: string; payload: Task }) {
@@ -29,16 +58,19 @@ function* editTask({
   yield apiService.updateTaskById(payload.id, {
     content: payload.content
   });
-  yield call(fetchTasks);
+  const currentProject = yield select(ApiSelectors.currentProject);
+  yield call(fetchTasks, currentProject);
 }
 
 function* addTask({ type, payload }: { type: string; payload: string }) {
-  yield apiService.createNewTask({
+  const api = new TodoistApiREST('9ea02f65a3203b7c30a1c67f05f96c8cb5437dd7');
+  const currentProject = yield select(ApiSelectors.currentProject);
+  yield api.createNewTask({
     content: payload,
     // eslint-disable-next-line @typescript-eslint/camelcase
-    project_id: 2215859840
+    project_id: currentProject.id
   });
-  yield call(fetchTasks);
+  yield call(fetchTasks, currentProject);
 }
 
 function* deleteTask({
@@ -48,20 +80,22 @@ function* deleteTask({
   type: string;
   payload: { id: number };
 }) {
+  const currentProject = yield select(ApiSelectors.currentProject);
   yield apiService.deleteTaskById(payload.id.toString());
-  yield call(fetchTasks);
+  yield call(fetchTasks, currentProject);
 }
 
-function* fetchTasks() {
-  const allTasks = yield apiService
-    .getTasksFiltered({
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      project_id: 2215859840
-    })
-    .then(val => new Array(...val));
-
-  yield put({
-    type: API_REQ.TASKS.FETCH_ALL_TASKS_BY_PROJECT_ID.SUCCESS,
-    payload: allTasks
-  });
+function* fetchTasks(project?: Project) {
+  if (project) {
+    const allTasks = yield apiService
+      .getTasksFiltered({
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        project_id: project.id
+      })
+      .then(val => new Array(...val));
+    yield put({
+      type: API_REQ.TASKS.FETCH_ALL_TASKS_BY_PROJECT_ID.SUCCESS,
+      payload: allTasks
+    });
+  }
 }
