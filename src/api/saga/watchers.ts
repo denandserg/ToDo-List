@@ -1,4 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
+import TodoistApiREST from 'todoist-api-ts';
 
 import API_REQ from '../../redux/actions';
 import apiService from '../todoService';
@@ -33,7 +34,8 @@ function* editTask({
 }
 
 function* addTask({ type, payload }: { type: string; payload: string }) {
-  yield apiService.createNewTask({
+  const api = new TodoistApiREST('9ea02f65a3203b7c30a1c67f05f96c8cb5437dd7');
+  yield api.createNewTask({
     content: payload,
     // eslint-disable-next-line @typescript-eslint/camelcase
     project_id: 2215859840
