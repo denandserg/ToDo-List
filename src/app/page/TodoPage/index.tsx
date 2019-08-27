@@ -21,15 +21,23 @@ function _TodoPage(props: typeof _TodoPage.defaultProps) {
   }, [dispatch]);
   const allTasks = useSelector(ApiSelectors.allTasks);
 
+  const currentProject = useSelector(ApiSelectors.currentProject);
+
   function handleAddTask(data: { addTask?: string }) {
     dispatch({ type: 'ADD_TASK', payload: data.addTask });
   }
 
   return (
     <>
-      <AddTaskField onSubmit={handleAddTask} />
-      <TaskFilterField />
-      <TodoList tasks={allTasks} />
+      {currentProject ? (
+        <>
+          <AddTaskField onSubmit={handleAddTask} />
+          <TaskFilterField />
+          <TodoList tasks={allTasks} />
+        </>
+      ) : (
+        <div>Please, choose your project</div>
+      )}
     </>
   );
 }

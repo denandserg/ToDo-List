@@ -31,6 +31,10 @@
     user-select: none;
   }
 
+  .TodoListTask_Title__Completed {
+    text-decoration: line-through;
+  }
+
   .TodoListTask_Button {
     padding: 0 0 0 toem(35);
   }
