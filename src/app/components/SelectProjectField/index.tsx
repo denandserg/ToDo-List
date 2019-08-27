@@ -46,6 +46,7 @@ function _SelectProjectField(props: _Props) {
             setTimeout(handleSubmit(handleSelectCurrentProject), 0)
           }
         >
+          <option>Choose you project</option>
           {getAllProject.map((el: Project) => (
             <option key={el.id}>{el.name}</option>
           ))}

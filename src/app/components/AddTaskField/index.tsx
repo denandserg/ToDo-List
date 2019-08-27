@@ -19,13 +19,6 @@ function AddTaskField(props: InjectedFormProps) {
         />
         <div>
           <button
-            type="submit"
-            disabled={pristine || submitting}
-            className={sm.AddTaskField_FormButton}
-          >
-            Add
-          </button>
-          <button
             type="button"
             className={cn(
               sm.AddTaskField_FormButton,
@@ -35,6 +28,13 @@ function AddTaskField(props: InjectedFormProps) {
             onClick={reset}
           >
             Clear
+          </button>
+          <button
+            type="submit"
+            disabled={pristine || submitting}
+            className={sm.AddTaskField_FormButton}
+          >
+            Add
           </button>
         </div>
       </form>
