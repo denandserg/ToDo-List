@@ -19,18 +19,16 @@ export default Header;
 
 function _Header(props: Props) {
   function handleSignIn() {
-    axios
-      .get(
-        `https://todoist.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=task:add,data:read_write,data:delete&state=secretstring`,
-        {
-          headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': '*'
-          }
+    axios.get(
+      `https://todoist.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=task:add,data:read_write,data:delete&state=secretstring`,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': '*'
         }
-      )
-      .then(data => console.log(data));
+      }
+    );
   }
 
   return (
