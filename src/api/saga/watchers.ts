@@ -28,7 +28,7 @@ function* changeFinishedTask({
   type: string;
   payload: { id: number };
 }) {
-  const api = new TodoistApiREST('9ea02f65a3203b7c30a1c67f05f96c8cb5437dd7');
+  const api = new TodoistApiREST(process.env.REACT_APP_USER_TOKEN as string);
   const currentProject = yield select(ApiSelectors.currentProject);
   yield api.closeTaskById(payload.id);
   yield call(fetchTasks, currentProject);
@@ -78,7 +78,7 @@ function* editTask({
 }
 
 function* addTask({ type, payload }: { type: string; payload: string }) {
-  const api = new TodoistApiREST('9ea02f65a3203b7c30a1c67f05f96c8cb5437dd7');
+  const api = new TodoistApiREST(process.env.REACT_APP_USER_TOKEN as string);
   const currentProject = yield select(ApiSelectors.currentProject);
   yield api.createNewTask({
     content: payload,
