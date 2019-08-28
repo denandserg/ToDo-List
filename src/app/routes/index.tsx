@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router';
 
+import ApiSelectors from '../../redux/selectors';
 import Loader from '../components/Loader';
 import CommonPageLayout from '../containers/CommonPageLayout';
 import Footer from '../containers/Footer';
@@ -10,6 +12,19 @@ import RoutePaths from './paths';
 import sm from './styles.module.scss';
 
 export default function AppRoutes() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const path = window.location.search.search(/code=/);
+    const password = window.location.search.slice(path + 5);
+    if (password.length > 20) {
+      sessionStorage.setItem('token', password);
+      dispatch({ type: 'IS_SIGNED' });
+    }
+  }, [dispatch]);
+
+  const isSigned = useSelector(ApiSelectors.isSigned);
+
   return (
     <div className={sm.AppRoutes}>
       <React.Suspense fallback={<Loader />}>
@@ -19,15 +34,17 @@ export default function AppRoutes() {
           </Switch>
         </header>
         <main className={sm.AppRoutes_Main}>
-          <Switch>
-            <Route
-              exact
-              path={RoutePaths._()}
-              render={() => (
-                <CommonPageLayout renderMainContent={() => <TodoPage />} />
-              )}
-            />
-          </Switch>
+          {isSigned && (
+            <Switch>
+              <Route
+                exact
+                path={RoutePaths._()}
+                render={() => (
+                  <CommonPageLayout renderMainContent={() => <TodoPage />} />
+                )}
+              />
+            </Switch>
+          )}
         </main>
         <footer className={sm.AppRoutes_Footer}>
           <Switch>

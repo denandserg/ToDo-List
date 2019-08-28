@@ -7,7 +7,8 @@ const ApiSelectors = {
   allTasks: createApiSelector(({ tasks }) => tasks),
   allProjects: createApiSelector(({ allProjects }) => allProjects),
   currentProject: createApiSelector(({ currentProject }) => currentProject),
-  currentTask: createApiSelector(({ currentTask }) => currentTask)
+  currentTask: createApiSelector(({ currentTask }) => currentTask),
+  isSigned: createApiSelector(({ isSigned }) => isSigned)
 };
 
 export default ApiSelectors;

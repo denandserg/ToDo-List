@@ -7,6 +7,7 @@ export interface ApiState {
   currentTask: Task | null;
   allProjects: [];
   currentProject: Project | null;
+  isSigned: boolean;
 }
 
 const api = combineReducers<ApiState>({
@@ -38,6 +39,17 @@ const api = combineReducers<ApiState>({
     switch (type) {
       case API_REQ.PROJECTS.SET_CURRENT_PROJECT:
         return payload;
+      default:
+        return state;
+    }
+  },
+  isSigned(state = false, { type }) {
+    switch (type) {
+      case API_REQ.SESSION._:
+        return state;
+      case API_REQ.SESSION.SIGNED: {
+        return !state;
+      }
       default:
         return state;
     }

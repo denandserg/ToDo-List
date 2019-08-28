@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
+import ApiSelectors from '../../../redux/selectors';
 import Button from '../../components/Button';
 import Logo from '../../components/Logo';
 import SelectProjectField from '../../components/SelectProjectField';
@@ -17,6 +19,7 @@ const Header = enhance<Props, Props>(_Header);
 export default Header;
 
 function _Header(props: Props) {
+  const isSigned = useSelector(ApiSelectors.isSigned);
   async function handleSignIn() {
     window.location.href = `https://todoist.com/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=task:add,data:read_write,data:delete&state=secretstring`;
   }
@@ -31,7 +34,7 @@ function _Header(props: Props) {
         </Button>
       </div>
       <div className={sm.Header_CenterGroup}>
-        <SelectProjectField />
+        {isSigned && <SelectProjectField />}
       </div>
       <div className={sm.Header_RightGroup}>
         <Button iconPre="user" variant="standard" onClick={handleSignIn}>

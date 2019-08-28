@@ -19,6 +19,12 @@ export default function* watchersSaga() {
   yield takeEvery(['CURRENT_PROJECT'], setCurrentProject);
 
   yield takeEvery(['TOGGLE_FINISHED_TASK'], changeFinishedTask);
+
+  yield takeEvery(['IS_SIGNED'], checkSignInUser);
+}
+
+function* checkSignInUser({ type }: { type: string; payload: boolean }) {
+  yield put({ type: API_REQ.SESSION.SIGNED });
 }
 
 function* changeFinishedTask({

@@ -14,6 +14,10 @@ const API_REQ = {
     SET_CURRENT_PROJECT: createAsyncActionTypes(
       'API_REQ.PROJECTS.SET_CURRENT_PROJECT'
     )
+  },
+  SESSION: {
+    _: createAsyncActionTypes('API_REQ.SESSION'),
+    SIGNED: createAsyncActionTypes('API_REQ.SESSION.SIGNED')
   }
 };
 
