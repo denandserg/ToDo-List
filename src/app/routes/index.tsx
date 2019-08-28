@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 import Loader from '../components/Loader';
 import CommonPageLayout from '../containers/CommonPageLayout';
@@ -27,7 +27,6 @@ export default function AppRoutes() {
                 <CommonPageLayout renderMainContent={() => <TodoPage />} />
               )}
             />
-            <Redirect to={RoutePaths._()} />
           </Switch>
         </main>
         <footer className={sm.AppRoutes_Footer}>
