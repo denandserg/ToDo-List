@@ -84,7 +84,7 @@
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "npx": "^10.2.0",
     "prettier": "^1.17.0",
     "source-map-explorer": "^1.8.0",
